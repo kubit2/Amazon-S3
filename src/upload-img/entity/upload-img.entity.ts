@@ -1,16 +1,10 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { BaseEntity } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('upload_img')
-export class UploadImg {
+export class UploadImg extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
 
   @Column()
   originalName: string;
@@ -26,10 +20,4 @@ export class UploadImg {
 
   @Column({ comment: 'S3 업로드된 location URL' })
   url: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date; // Updated to use 'updatedAt' instead of 'updateAt'
 }
